@@ -14,18 +14,26 @@
     width: 300px;
     height: 300px;
     border-top: none;
+    font-size: 60px;
+    justify-content: space-around;
+    text-align:center;
+
+
 }
 
 .row{
     display: flex;
     height: 30%;
+
 }
 .linedrow{
- border-bottom: solid black 2px;
+    border-bottom: solid black 2px;
+
 
 }
 .midcol{
     border-left: solid black 2px;
     border-right: solid black 2px;
+
 
 }
