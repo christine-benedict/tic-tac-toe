@@ -17,10 +17,12 @@ class App extends Component {
                 botright: ''
             },
             userTurn: 'X',
+            counter: 1
         }
     }
 
     userMark(event){
+
         const attribute = event.target.id
         //console.log(this.state.topleft)
 
@@ -39,8 +41,12 @@ class App extends Component {
         }
         this.setState({
             squares: squares,
-            userTurn: userTurn
+            userTurn: userTurn,
+            counter: this.state.counter + 1
         })
+
+
+        console.log(this.state.counter);
         // console.log("topleft is: " + squares.topleft)
         // console.log("sq att: " + squares.attribute);
         // console.log("userturn: " + userTurn);
@@ -50,14 +56,21 @@ class App extends Component {
                 alert(squares.topleft + ' wins!')
                 window.location.reload()
             }
-        if(( squares.midmid !== '' && squares.midleft === squares.midmid && squares.midleft === squares.midright) || (squares.midmid !== '' && squares.topleft === squares.midmid && squares.midmid === squares.botright) || (squares.midmid !== '' && squares.topright === squares.midmid && squares.midmid === squares.botleft) || (squares.midmid !== '' && squares.topmid === squares.midmid && squares.midmid === squares.botmid)){
+        if( ( squares.midmid !== '' && squares.midleft === squares.midmid && squares.midleft === squares.midright) || (squares.midmid !== '' && squares.topleft === squares.midmid && squares.midmid === squares.botright) || (squares.midmid !== '' && squares.topright === squares.midmid && squares.midmid === squares.botleft) || (squares.midmid !== '' && squares.topmid === squares.midmid && squares.midmid === squares.botmid) )  {
                 alert(squares.midmid + ' wins!')
                 window.location.reload()
             }
-        if(squares.botleft !== '' && squares.botleft === squares.botmid && squares.botleft === squares.botright){
-                alert(squares.botleft + ' wins!')
+        if( (squares.botright!== '' && squares.botleft === squares.botmid && squares.botleft === squares.botright) || (squares.botright !== '' && squares.botright === squares.midright && squares.botright === squares.topright) ) {
+                alert(squares.botright + ' wins!')
                 window.location.reload()
             }
+            console.log({squares});
+
+
+        if(this.state.counter === 9 ){
+        alert("No winner! Try again....")
+        window.location.reload()
+        }
     }
 
     //
