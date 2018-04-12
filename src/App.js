@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
+import Square from './components/square'
 import './App.css';
 import {Grid, Row, Col} from 'react-bootstrap'
 class App extends Component {
     constructor(props){
         super(props)
         this.state = {
-            squares: {
-                topleft: '',
-                topmid: '',
-                topright: '',
-                midleft: '',
-                midmid: '',
-                midright: '',
-                botleft: '',
-                botmid: '',
-                botright: ''
-            },
+            board: [
+                {topleft: ''},
+                {topmid: ''},
+                {topright: ''},
+                {midleft: ''},
+                {midmid: ''},
+                {midright: ''},
+                {botleft: ''},
+                {botmid: ''},
+                {botright: ''}
+            ],
             userTurn: 'X',
             counter: 1
         }
@@ -83,27 +84,18 @@ class App extends Component {
 //onMouseOver={this.winCondition.bind(this)}
 
     render() {
-        let {squares} = this.state
+        let {board} = this.state
+        let squares = board.map( (square,index) =>{
+            return(
+                <Square xOrO={index}/>
+            )
+
+        })
         return (
           <div className="App">
-            <p> Tic-tac-toe </p>
-            <Grid className = "grid" >
-                <Row className="linedrow">
-                    <Col onClick={this.userMark.bind(this)} className = "col" id="topleft" xs={4} md={4}>{this.state.squares.topleft}</Col>
-                    <Col onClick={this.userMark.bind(this)} className = "midcol" id="topmid" xs={4} md={4}> {squares.topmid}</Col>
-                    <Col onClick={this.userMark.bind(this)} className = "col" id="topright" xs={4} md={4}> {squares.topright}</Col>
-                </Row>
-                <Row className="linedrow">
-                    <Col onClick={this.userMark.bind(this)} className = "col" id="midleft" xs={4} md={4}>{squares.midleft} </Col>
-                    <Col onClick={this.userMark.bind(this)} className = "midcol" id="midmid" xs={4} md={4}> {squares.midmid} </Col>
-                    <Col onClick={this.userMark.bind(this)} className = "col" id="midright" xs={4} md={4}> {squares.midright}</Col>
-                </Row>
-                <Row className="row">
-                    <Col onClick={this.userMark.bind(this)} className = "col" id="botleft" xs={4} md={4}> {squares.botleft}</Col>
-                    <Col onClick={this.userMark.bind(this)} className = "midcol" id="botmid" xs={4} md={4}> {squares.botmid}</Col>
-                    <Col onClick={this.userMark.bind(this)} className = "col" id="botright" xs={4} md={4}>{squares.botright} </Col>
-                </Row>
-            </Grid>
+            <h1> Tic-tac-toe </h1>
+
+            <div id="Board"> {squares} </div>
 
 
 
