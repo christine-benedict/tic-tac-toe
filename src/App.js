@@ -7,85 +7,66 @@ class App extends Component {
         this.state = {
             board: ['','','','','','','','','',],
             userTurn: 'X',
-            counter: 1
+            counter: 0
         }
     }
 
     userMark(element, position){
-
-        let {board, userTurn} = this.state
-        if(element === '') {
+        let { board, userTurn, counter } = this.state
+        if( element === '' ) {
             // update content of square
              board[position] = userTurn
-
             // change user turn
             userTurn === 'X' ? userTurn = 'O' : userTurn = 'X'
-
+            counter = counter + 1
+            // console.log(counter);
+            // console.log(board[0]);
+            this.winCondition(board)
         }
         this.setState({
             board: board,
             userTurn: userTurn,
-            counter: this.state.counter + 1
+            counter: counter
+
         })
+    }
+
+    winCondition(board){
+        let winners = [ [0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6] ]
 
 
-        //console.log(this.state.counter);
+        for(let i=0; i<winners.length; i++){
+            const [a,b,c] = winners[i]
+            console.log(i)
+            if( board[a] !== '' && board[a] === board[b] && board[a] === board[c] ){
+                alert( board[a] + " wins!")
+                window.location.reload()
+                break
+            }else if ( i === 7 && !board.includes('')){
+                alert("No Winner :(.. try again..")
+                window.location.reload()
+            }
+        }
+
+
 
         }
-        // console.log("topleft is: " + squares.topleft)
-        // console.log("sq att: " + squares.attribute);
-        // console.log("userturn: " + userTurn);
-        //console.log(this.state.topright)
-
-    //     if ((squares.topleft !== '' && squares.topleft === squares.topmid && squares.topleft === squares.topright) || (squares.topleft !== '' && squares.topleft === squares.midleft && squares.topleft === squares.botleft)){
-    //             alert(squares.topleft + ' wins!')
-    //             window.location.reload()
-    //         }
-    //     if( ( squares.midmid !== '' && squares.midleft === squares.midmid && squares.midleft === squares.midright) || (squares.midmid !== '' && squares.topleft === squares.midmid && squares.midmid === squares.botright) || (squares.midmid !== '' && squares.topright === squares.midmid && squares.midmid === squares.botleft) || (squares.midmid !== '' && squares.topmid === squares.midmid && squares.midmid === squares.botmid) )  {
-    //             alert(squares.midmid + ' wins!')
-    //             window.location.reload()
-    //         }
-    //     if( (squares.botright!== '' && squares.botleft === squares.botmid && squares.botleft === squares.botright) || (squares.botright !== '' && squares.botright === squares.midright && squares.botright === squares.topright) ) {
-    //             alert(squares.botright + ' wins!')
-    //             window.location.reload()
-    //         }
-    //         console.log({squares});
-    //
-    //
-    //     if(this.state.counter === 9 ){
-    //     alert("No winner! Try again....")
-    //     window.location.reload()
-    //     }
 
 
-
-    //
-    // winCondition(event){
-    //     console.log("CHANGING");
-    //
-    //         }
-
-
-//onMouseOver={this.winCondition.bind(this)}
-
-    render() {
-        let {board} = this.state
-        let squares = board.map( (element,index) =>{
+    render(){
+        let { board } = this.state
+        let squares = board.map( (element,index)=>{
             return(
                 <Square xOrO={element} clicky = {this.userMark.bind(this, element, index)}/>
             )
         })
 
-
         return (
           <div className="App">
             <h1> Tic-tac-toe </h1>
             <div id="Board" > { squares } </div>
-
-
-
           </div>
-        );
+        )
     }
 }
 

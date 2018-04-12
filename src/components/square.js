@@ -8,8 +8,6 @@ class Square extends Component{
             <div id="square" onClick={this.props.clicky}>
                 <h1>{this.props.xOrO}</h1>
             </div>
-
-
         )
     }
 }
