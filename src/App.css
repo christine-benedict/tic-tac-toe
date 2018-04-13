@@ -3,8 +3,14 @@
 
 }
 
+h1{
+    font-weight: bold;
+    
+}
 
-
+h3{
+    text-decoration: underline;
+}
 #square h1{
     font-size: 90px;
 }
@@ -13,8 +19,7 @@
 
 #Board div{
     min-width: 33.33%;
-    font-family: 'Indie Flower', cursive;
-    font-weight: bold;
+    font-family: 'Indie Flower';
     justify-content: center;
     vertical-align: center;
     align-items: center;
@@ -38,7 +43,7 @@ overflow: hidden;
 border: white 5px solid;
 border-width: thick;
 
-background-image: url(https://i.pinimg.com/474x/d2/ff/11/d2ff1157bd1910c3b7a66ff9bb20f48d--tic-tac-toe-template-tic-tac-toe-board.jpg);
+background-image: url(http://leversetdujour.info/attachment/full/tic-tac-toe-board/bill-the-lizard-tictactoe.jpg);
 background-position: center ;
 background-size: cover;
 
