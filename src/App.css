@@ -6,20 +6,22 @@
 
 
 #square h1{
-    font-size: 80px;
+    font-size: 90px;
 }
 
 
 
 #Board div{
     min-width: 33.33%;
-    border: 5px black solid;
+    font-family: 'Indie Flower', cursive;
+    font-weight: bold;
     justify-content: center;
     vertical-align: center;
     align-items: center;
     cursor: pointer;
     overflow: hidden;
-    min-height: 33.33%
+    min-height: 33.33%;
+    padding: -5px;
 
 
 
@@ -33,6 +35,13 @@ margin: auto auto;
 flex-wrap: wrap;
 margin-top: 20px;
 overflow: hidden;
+border: white 5px solid;
+border-width: thick;
+
+background-image: url(https://i.pinimg.com/474x/d2/ff/11/d2ff1157bd1910c3b7a66ff9bb20f48d--tic-tac-toe-template-tic-tac-toe-board.jpg);
+background-position: center ;
+background-size: cover;
+
 
 
 
